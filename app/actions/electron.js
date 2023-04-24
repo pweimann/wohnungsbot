@@ -92,7 +92,7 @@ export function showConfiguration(): Action {
 export function setInteractiveMode(interactiveModeEnabled: boolean): Action {
   return {
     type: SET_INTERACTIVE_MODE,
-    payload: interactiveModeEnabled
+    payload: true
   };
 }
 

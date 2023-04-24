@@ -9,6 +9,7 @@ import type { Dispatch } from '../reducers/types';
 import type { Configuration } from '../reducers/configuration';
 import type ElectronUtils from './electronUtils';
 import { LOGINSTATUS } from '../reducers/configuration';
+import { setInteractiveMode } from '../actions/electron'
 
 export default function* performLogin(
   dispatch: Dispatch,
@@ -65,6 +66,14 @@ export default function* performLogin(
       throw new Error('Anmeldefehler');
       // TODO: need's some kind of error recovery.
     }
+    dispatch(setInteractiveMode(true));
+    yield sleep(30000)
+    dispatch(setInteractiveMode(false));
+    // // Check for email/sms verification
+    // if (yield electronUtils.elementExists('')) {
+    //   dispatch(setBotMessage('Geben Sie Ihren Authentifizierungscode ein', 4000));
+    //
+    // }
 
     dispatch(setLoginStatus(LOGINSTATUS.LOGGED_IN));
 

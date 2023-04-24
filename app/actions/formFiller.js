@@ -56,7 +56,7 @@ export const generatePersonalDataFormFillingDescription = (
   if (!userIsLoggedIn) {
     fieldFillingDescription.push({
       selector: '#contactForm-emailAddress',
-      type: 'text',
+      type: 'email',
       value: contactData.eMail
     });
   }
